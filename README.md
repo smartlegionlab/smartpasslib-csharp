@@ -1,4 +1,4 @@
-# SmartPasswordLib C# <sup>v1.0.0</sup>
+# SmartPasswordLib C# <sup>v1.0.1</sup>
 
 **C# implementation of deterministic smart password generator. Same secret + same length = same password across all platforms (Python, JS, Kotlin, Go, C#).**
 
@@ -234,107 +234,110 @@ dotnet run -- --test
 # Tests
 
 ```text
-============================================================
-🔐 SMART PASSWORDS LIBRARY C# - TEST SUITE
-============================================================
+========================================
+SMART PASSWORD LIBRARY C#
+========================================
+
+RUNNING TESTS...
 
 
-📌 [1] SMART PASSWORD (Deterministic)
+[SMART PASSWORD (Deterministic)]
 ------------------------------------------------------------
   Secret phrase: MyCatHippo2026
   Password length: 16
   Generated password: jrh_E5V!2#neNjnP
 
-  ✅ PASS: Smart password length is 16
+  PASS: Smart password length is 16
   Same secret -> same password: jrh_E5V!2#neNjnP4ffR
-  ✅ PASS: Determinism (same secret → same password)
+  PASS: Determinism (same secret -> same password)
   Secret A -> PSJGMgGnOfgRg9Sd
   Secret B -> IBJ0XgDnjRjB!kG3
-  ✅ PASS: Different secrets → different passwords
+  PASS: Different secrets -> different passwords
   Length 12: jrh_E5V!2#ne
   Length 24: jrh_E5V!2#neNjnP4ffRkWcv
-  ✅ PASS: Different lengths → different passwords
+  PASS: Different lengths -> different passwords
 
-📌 [2] PUBLIC & PRIVATE KEYS
+[PUBLIC & PRIVATE KEYS]
 ------------------------------------------------------------
 
-  🔓 Public key (60 iterations) - STORE ON SERVER:
+  Public key (60 iterations) - STORE ON SERVER:
   cca9f8eeb9a245ca805883f4cee7ca059c44bfd17e837948f058a053d9f70ebe
 
-  🔐 Private key (30 iterations) - NEVER STORE:
+  Private key (30 iterations) - NEVER STORE:
   7035d0e549e3342171052e7b00264b78629dfff256ad3fa118c075edd53d454e
 
-  ✅ PASS: Public key != Private key
+  PASS: Public key != Private key
   Verification with correct secret: True
   Verification with wrong secret: False
-  ✅ PASS: Correct secret verification
-  ✅ PASS: Wrong secret verification
+  PASS: Correct secret verification
+  PASS: Wrong secret verification
 
-📌 [3] RANDOM PASSWORD GENERATORS
+[RANDOM PASSWORD GENERATORS]
 ------------------------------------------------------------
-  🎲 Strong random (crypto secure): HpVeh8ooiZsVCQ0F
-  🎲 Base random:                   Fo#HMuulmij@cZCk
-  🔢 Auth code (2FA):               JdPX$xp4
+  Strong random (crypto secure): vl3S4KLuL!-FqbQx
+  Base random:                   ead7FrYLxcAvSO@N
+  Auth code (2FA):               G70ufGk5
 
-  ✅ PASS: Strong random length
-  ✅ PASS: Base random length
-  ✅ PASS: Auth code length
+  PASS: Strong random length
+  PASS: Base random length
+  PASS: Auth code length
 
-📌 [4] INPUT VALIDATION
+[INPUT VALIDATION]
 ------------------------------------------------------------
-  Secret too short: rejected ✓
-  ✅ PASS: Secret shorter than 12 chars rejected
-  Code too short: rejected ✓
-  ✅ PASS: Code shorter than 4 chars rejected
-  Password too short: rejected ✓
-  ✅ PASS: Password shorter than 12 chars rejected
-  ✅ PASS: Password uses only allowed characters
+  Secret too short: rejected
+  PASS: Secret shorter than 12 chars rejected
+  Code too short: rejected
+  PASS: Code shorter than 4 chars rejected
+  Password too short: rejected
+  PASS: Password shorter than 12 chars rejected
+  PASS: Password uses only allowed characters
 
-📌 [5] MANAGER TESTS (CRUD Operations)
+[MANAGER TESTS (CRUD Operations)]
 ------------------------------------------------------------
-  Test file: /tmp/smartpass_test_290b6c64-26cc-4992-90bf-4bec20974ba5.json
+  Test file: /tmp/smartpass_test_9ccdd5d9-ff15-4dbc-8108-cedd4dac3288.json
 
-  ✅ PASS: CREATE: Add new password
-  ✓ Added: Test Account (16 chars)
-  ✅ PASS: READ: Get password by public key
-  ✓ Retrieved: Test Account
-  ✅ PASS: UPDATE: Update description and length
-  ✓ Updated: Updated Account (24 chars)
-  ✅ PASS: DELETE: Remove password
-  ✓ Deleted: removed
+  PASS: CREATE: Add new password
+  Added: Test Account (16 chars)
+  PASS: READ: Get password by public key
+  Retrieved: Test Account
+  PASS: UPDATE: Update description and length
+  Updated: Updated Account (24 chars)
+  PASS: DELETE: Remove password
+  Deleted: removed
   Before clear: 2 passwords
-  ✅ PASS: CLEAR: Remove all passwords
+  PASS: CLEAR: Remove all passwords
   After clear: 0 passwords
-  ✓ Test file cleaned up
+  Test file cleaned up
 
-📌 [6] MANAGER PERSISTENCE (Save/Load)
+[MANAGER PERSISTENCE (Save/Load)]
 ------------------------------------------------------------
   Saved: 2 password(s)
-  File: /tmp/smartpass_persist_cd5ebbd9-00f0-4101-af23-ecb3110aa81a.json
+  File: /tmp/smartpass_persist_22703d0d-d063-427b-b779-5a2b6d1c17ba.json
   File exists: True
   Loaded: 2 password(s)
-  ✅ PASS: PERSISTENCE: Data survives file reload
-  ✓ Test file cleaned up
+  PASS: PERSISTENCE: Data survives file reload
+  Test file cleaned up
 
-📌 [7] CROSS-PLATFORM COMPATIBILITY
+[CROSS-PLATFORM COMPATIBILITY]
 ------------------------------------------------------------
   Secret: MyCatHippo2026
   Expected password (Python/JS/Kotlin/Go): jrh_E5V!2#neNjnP
   Actual password (C#):                   jrh_E5V!2#neNjnP
-  ✅ PASS: Cross-platform compatibility (same as Python/JS/Kotlin/Go)
+  PASS: Cross-platform compatibility (same as Python/JS/Kotlin/Go)
 
 ============================================================
-📊 RESULTS: 21 passed, 0 failed (total: 21)
+RESULTS: 21 passed, 0 failed (total: 21)
 ============================================================
 
-🎉 ALL TESTS PASSED! Library is ready for production.
+ALL TESTS PASSED! Library is ready for production.
+
 ```
 
 # Manager
 
 ```text
 ========================================
-SMART PASSWORDS LIBRARY C#
+SMART PASSWORD LIBRARY C#
 ========================================
 
 Config file: /home/user/.config/smart_password_manager/passwords.json

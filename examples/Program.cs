@@ -10,7 +10,7 @@ class Program
     {
         Console.WriteLine();
         Console.WriteLine("========================================");
-        Console.WriteLine("SMART PASSWORDS LIBRARY C#");
+        Console.WriteLine("SMART PASSWORD LIBRARY C#");
         Console.WriteLine("========================================");
         Console.WriteLine();
 
