@@ -1,4 +1,4 @@
-# SmartPasswordLib C# <sup>v1.0.1</sup>
+# Smart Password Library C# <sup>v1.0.1</sup>
 
 **C# implementation of deterministic smart password generator. Same secret + same length = same password across all platforms (Python, JS, Kotlin, Go, C#).**
 
