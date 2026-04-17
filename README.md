@@ -1,4 +1,4 @@
-# Smart Password Library C# <sup>v1.0.1</sup>
+# Smart Password Library C# <sup>v1.0.2</sup>
 
 **C# implementation of deterministic smart password generator. Same secret + same length = same password across all platforms (Python, JS, Kotlin, Go, C#).**
 
@@ -360,18 +360,25 @@ Choose:
 ## Ecosystem
 
 **Core Libraries:**
-- **[smartpasslib](https://github.com/smartlegionlab/smartpasslib)** - Python implementation
-- **[smartpasslib-js](https://github.com/smartlegionlab/smartpasslib-js)** - JavaScript implementation
-- **[smartpasslib-kotlin](https://github.com/smartlegionlab/smartpasslib-kotlin)** - Kotlin implementation
-- **[smartpasslib-go](https://github.com/smartlegionlab/smartpasslib-go)** - Go implementation
-- **[smartpasslib-csharp](https://github.com/smartlegionlab/smartpasslib-csharp)** - C# implementation
+- **[smartpasslib](https://github.com/smartlegionlab/smartpasslib)** - Python
+- **[smartpasslib-js](https://github.com/smartlegionlab/smartpasslib-js)** - JavaScript
+- **[smartpasslib-kotlin](https://github.com/smartlegionlab/smartpasslib-kotlin)** - Kotlin
+- **[smartpasslib-go](https://github.com/smartlegionlab/smartpasslib-go)** - Go
+- **[smartpasslib-csharp](https://github.com/smartlegionlab/smartpasslib-csharp)** - C# (this)
 
-**Applications:**
-- **[Desktop Manager](https://github.com/smartlegionlab/smart-password-manager-desktop)** - Cross-platform desktop app
-- **[CLI PassMan](https://github.com/smartlegionlab/clipassman)** - Console password manager
-- **[CLI PassGen](https://github.com/smartlegionlab/clipassgen)** - Console password generator
-- **[Web Manager](https://github.com/smartlegionlab/smart-password-manager-web)** - Web interface
-- **[Android Manager](https://github.com/smartlegionlab/smart-password-manager-android)** - Mobile Android app
+**CLI Applications:**
+- **[CLI PassMan (Python)](https://github.com/smartlegionlab/clipassman)**
+- **[CLI PassGen (Python)](https://github.com/smartlegionlab/clipassgen)**
+- **[CLI Manager (C#)](https://github.com/smartlegionlab/SmartPasswordManagerCsharpCli)**
+- **[CLI Generator (C#)](https://github.com/smartlegionlab/SmartPasswordGeneratorCsharpCli)** 
+
+**Desktop Applications:**
+- **[Desktop Manager (Python)](https://github.com/smartlegionlab/smart-password-manager-desktop)**
+- **[Desktop Manager (C#)](https://github.com/smartlegionlab/SmartPasswordManagerCsharpDesktop)**
+
+**Other:**
+- **[Web Manager](https://github.com/smartlegionlab/smart-password-manager-web)**
+- **[Android Manager](https://github.com/smartlegionlab/smart-password-manager-android)**
 
 ## License
 
