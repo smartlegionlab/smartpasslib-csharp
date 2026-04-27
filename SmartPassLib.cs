@@ -1,5 +1,5 @@
 /**
- * SmartPasswordLib v1.0.3 - C# smart password generator
+ * SmartPassLib v1.0.4 - C# smart password generator
  * Cross-platform deterministic password generation
  * Same secret + same length = same password across all platforms
  *
@@ -37,21 +37,21 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 
-namespace SmartLegionLab.SmartPasswordLib
+namespace SmartLegionLab.SmartPassLib
 {
     // ============================================================
     // Core password generation
     // ============================================================
 
     /// <summary>
-    /// SmartPasswordLib - Deterministic smart password generator
+    /// SmartPassLib - Deterministic smart password generator
     /// </summary>
     public static class SmartPasswordGenerator
     {
         /// <summary>
         /// Library version
         /// </summary>
-        public const string Version = "1.0.3";
+        public const string Version = "1.0.4";
 
         /// <summary>
         /// Character set for password generation

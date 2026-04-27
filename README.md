@@ -1,4 +1,4 @@
-# Smart Password Library C# <sup>v1.0.3</sup>
+# Smart Password Library C# <sup>v1.0.4</sup>
 
 **C# implementation of deterministic smart password generator. Same secret + same length = same password across all platforms (Python, JS, Kotlin, Go, C#).**
 
@@ -69,18 +69,13 @@
 ## Installation
 
 ### Manual
-Copy `SmartPasswordLib.cs` to your project.
-
-### Or build your own DLL
-```bash
-dotnet build -c Release
-```
+Copy `SmartPassLib.cs` to your project.
 
 ## Quick Usage
 
 ### Generate Smart Password
 ```csharp
-using SmartLegionLab.SmartPasswordLib;
+using SmartLegionLab.SmartPassLib;
 
 var secret = "MyCatHippo2026";
 var length = 16;
@@ -198,7 +193,7 @@ manager.DeleteSmartPassword(publicKey);
 
 ## Cross-Platform Compatibility
 
-SmartPasswordLib C# produces **identical passwords** to:
+SmartPassLib C# produces **identical passwords** to:
 
 | Platform   | Repository                                                                   |
 |------------|------------------------------------------------------------------------------|
@@ -207,155 +202,6 @@ SmartPasswordLib C# produces **identical passwords** to:
 | Kotlin     | [smartpasslib-kotlin](https://github.com/smartlegionlab/smartpasslib-kotlin) |
 | Go         | [smartpasslib-go](https://github.com/smartlegionlab/smartpasslib-go)         |
 | C#         | [smartpasslib-csharp](https://github.com/smartlegionlab/smartpasslib-csharp) |
-
-## Testing
-
-### Linux / macOS / Windows
-
-```bash
-# Clone repository
-git clone https://github.com/smartlegionlab/smartpasslib-csharp.git
-cd smartpasslib-csharp
-
-# Arch Linux
-sudo pacman -S dotnet-sdk
-
-# Run tests
-
-# Smart Password Manager
-dotnet run
-
-# Tests
-dotnet run -- --test
-```
-
-### Expected output
-
-# Tests
-
-```text
-========================================
-SMART PASSWORD LIBRARY C#
-========================================
-
-RUNNING TESTS...
-
-
-[SMART PASSWORD (Deterministic)]
-------------------------------------------------------------
-  Secret phrase: MyCatHippo2026
-  Password length: 16
-  Generated password: jrh_E5V!2#neNjnP
-
-  PASS: Smart password length is 16
-  Same secret -> same password: jrh_E5V!2#neNjnP4ffR
-  PASS: Determinism (same secret -> same password)
-  Secret A -> PSJGMgGnOfgRg9Sd
-  Secret B -> IBJ0XgDnjRjB!kG3
-  PASS: Different secrets -> different passwords
-  Length 12: jrh_E5V!2#ne
-  Length 24: jrh_E5V!2#neNjnP4ffRkWcv
-  PASS: Different lengths -> different passwords
-
-[PUBLIC & PRIVATE KEYS]
-------------------------------------------------------------
-
-  Public key (60 iterations) - STORE ON SERVER:
-  cca9f8eeb9a245ca805883f4cee7ca059c44bfd17e837948f058a053d9f70ebe
-
-  Private key (30 iterations) - NEVER STORE:
-  7035d0e549e3342171052e7b00264b78629dfff256ad3fa118c075edd53d454e
-
-  PASS: Public key != Private key
-  Verification with correct secret: True
-  Verification with wrong secret: False
-  PASS: Correct secret verification
-  PASS: Wrong secret verification
-
-[RANDOM PASSWORD GENERATORS]
-------------------------------------------------------------
-  Strong random (crypto secure): vl3S4KLuL!-FqbQx
-  Base random:                   ead7FrYLxcAvSO@N
-  Auth code (2FA):               G70ufGk5
-
-  PASS: Strong random length
-  PASS: Base random length
-  PASS: Auth code length
-
-[INPUT VALIDATION]
-------------------------------------------------------------
-  Secret too short: rejected
-  PASS: Secret shorter than 12 chars rejected
-  Code too short: rejected
-  PASS: Code shorter than 4 chars rejected
-  Password too short: rejected
-  PASS: Password shorter than 12 chars rejected
-  PASS: Password uses only allowed characters
-
-[MANAGER TESTS (CRUD Operations)]
-------------------------------------------------------------
-  Test file: /tmp/smartpass_test_9ccdd5d9-ff15-4dbc-8108-cedd4dac3288.json
-
-  PASS: CREATE: Add new password
-  Added: Test Account (16 chars)
-  PASS: READ: Get password by public key
-  Retrieved: Test Account
-  PASS: UPDATE: Update description and length
-  Updated: Updated Account (24 chars)
-  PASS: DELETE: Remove password
-  Deleted: removed
-  Before clear: 2 passwords
-  PASS: CLEAR: Remove all passwords
-  After clear: 0 passwords
-  Test file cleaned up
-
-[MANAGER PERSISTENCE (Save/Load)]
-------------------------------------------------------------
-  Saved: 2 password(s)
-  File: /tmp/smartpass_persist_22703d0d-d063-427b-b779-5a2b6d1c17ba.json
-  File exists: True
-  Loaded: 2 password(s)
-  PASS: PERSISTENCE: Data survives file reload
-  Test file cleaned up
-
-[CROSS-PLATFORM COMPATIBILITY]
-------------------------------------------------------------
-  Secret: MyCatHippo2026
-  Expected password (Python/JS/Kotlin/Go): jrh_E5V!2#neNjnP
-  Actual password (C#):                   jrh_E5V!2#neNjnP
-  PASS: Cross-platform compatibility (same as Python/JS/Kotlin/Go)
-
-============================================================
-RESULTS: 21 passed, 0 failed (total: 21)
-============================================================
-
-ALL TESTS PASSED! Library is ready for production.
-
-```
-
-# Manager
-
-```text
-========================================
-SMART PASSWORD LIBRARY C#
-========================================
-
-Config file: /home/user/.config/smart_password_manager/passwords.json
-Total passwords: 3
-
-Your existing passwords:
-  - Account 1 (100 chars)
-  - Account 2 (100 chars)
-  - MyCatHippo2026 (16 chars)
-
-
-MENU:
-  1. Add new password
-  2. Get password by description
-  3. Show all passwords
-  0. Exit
-Choose:
-```
 
 ## Ecosystem
 
@@ -395,7 +241,7 @@ Copyright (©) 2026, [Alexander Suvorov](https://github.com/smartlegionlab)
 ## Support
 
 - **Issues**: [GitHub Issues](https://github.com/smartlegionlab/smartpasslib-csharp/issues)
-- **Documentation**: This README
+- **Documentation**: This [README](README.md)
 
 ---
 
