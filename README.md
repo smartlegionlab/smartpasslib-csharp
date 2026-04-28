@@ -1,6 +1,16 @@
-# Smart Password Library C# <sup>v1.0.4</sup>
+# SmartPassLib C# <sup>v1.0.5</sup>
 
-**C# implementation of deterministic smart password generator. Same secret + same length = same password across all platforms (Python, JS, Kotlin, Go, C#).**
+---
+
+**Smart Passwords Library**: Cryptographic password generation and management without storage. 
+Generate passwords from secrets, verify knowledge without exposure, manage metadata securely.
+
+**Now with Cross-Platform Determinism**: Same secret + same parameters = identical password on 
+**C#, Python, Go, Kotlin, JavaScript** and any language with SHA-256.
+
+**Decentralized by Design**: Unlike traditional password managers that store encrypted vaults on central servers, 
+smartpasslib stores nothing. Your secrets never leave your device. Passwords are regenerated on-demand — 
+**no cloud, no database, no trust required**.
 
 ---
 
@@ -24,26 +34,31 @@
 
 ## Core Principles
 
-- **Deterministic Generation**: Same secret + same length = same password, every time
-- **Zero Storage**: Passwords exist only when generated, never stored
-- **Cross-Platform**: Compatible with Python, JS, Kotlin, Go implementations
-- **.NET Standard 2.0+**: Works on .NET Framework, .NET Core, .NET 5+, Xamarin, Unity
+- **Zero-Storage Security**: No passwords or secret phrases are ever stored or transmitted
+- **Decentralized Architecture**: No central servers, no cloud dependency, no third-party trust required
+- **Cross-Platform Deterministic Generation**: Identical secret + parameters = identical password **on any language** (SHA-256 based)
+- **Metadata Only**: Store only verification metadata (public keys, descriptions, lengths)
+- **On-Demand Regeneration**: Passwords are recalculated when needed, never retrieved from storage
+- **Cryptographically Secure**: Uses SHA-256
 
 ## Key Features
 
+- **Decentralized & Serverless**: No central database, no cloud lock-in, complete user sovereignty
 - **Smart Password Generation**: Deterministic from secret phrase
 - **Public/Private Key System**: 30 iterations for private key, 60 for public key
 - **Secret Verification**: Verify secret without exposing it
 - **Random Password Generation**: Cryptographically secure random passwords
 - **Authentication Codes**: Short codes for 2FA/MFA (4-20 chars)
 - **No External Dependencies**: Uses only System.Security.Cryptography
+- **Full Test Coverage**: 100% tested for reliability and security
 
 ## Security Model
 
 - **Proof of Knowledge**: Public keys verify secrets without exposing them
-- **Deterministic Certainty**: Mathematical certainty in password regeneration
-- **Ephemeral Passwords**: Passwords exist only in memory during generation
-- **Local Computation**: No data leaves your device
+- **Decentralized Trust**: No third party needed — you control your secrets completely
+- **Deterministic Security**: Same input = same output, always reproducible across platforms
+- **No Vulnerable Metadata Storage**: Only public keys and descriptions can be stored (optional)
+- **Zero Storage of Secrets**: Secret phrases exist only in your memory, private keys are derived on-demand and never persisted
 - **No Recovery Backdoors**: Lost secret = permanently lost passwords (by design)
 
 ---
@@ -59,12 +74,18 @@
 
 **Key derivation (same as Python/JS/Kotlin/Go versions):**
 
-| Key Type    | Iterations | Purpose                                               |
-|-------------|------------|-------------------------------------------------------|
-| Private Key | 30         | Password generation (never stored, never transmitted) |
-| Public Key  | 60         | Verification (stored on server)                       |
+| Key Type    | Iterations | Purpose                                                 |
+|-------------|------------|---------------------------------------------------------|
+| Private Key | 30         | Password generation (never stored, never transmitted)   |
+| Public Key  | 60         | Verification (stored on local)                          |
 
 **Character Set:** `abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$&*-_`
+
+**Decentralized Architecture**:
+- No central authority required
+- Metadata can be synced via any channel (USB, cloud, even paper)
+- Your security depends only on your secret phrase, not on any service provider
+- Works offline — no internet connection required
 
 ## Installation
 
@@ -77,7 +98,7 @@ Copy `SmartPassLib.cs` to your project.
 ```csharp
 using SmartLegionLab.SmartPassLib;
 
-var secret = "MyCatHippo2026";
+var secret = "MyStrongSecretPhrase2026!";
 var length = 16;
 
 var password = SmartPasswordGenerator.GenerateSmartPassword(secret, length);
@@ -86,19 +107,19 @@ Console.WriteLine(password); // e.g., "jrh_E5V!2#neNjnP"
 
 ### Generate Public/Private Keys
 ```csharp
-var secret = "MyCatHippo2026";
+var secret = "MyStrongSecretPhrase2026!";
 
 var publicKey = SmartPasswordGenerator.GeneratePublicKey(secret);
 var privateKey = SmartPasswordGenerator.GeneratePrivateKey(secret);
 
-Console.WriteLine($"Public Key (store on server): {publicKey}");
+Console.WriteLine($"Public Key (store on local): {publicKey}");
 Console.WriteLine($"Private Key (never store): {privateKey}");
 ```
 
 ### Verify Secret Against Public Key
 ```csharp
-var secret = "MyCatHippo2026";
-var storedPublicKey = "..."; // from server
+var secret = "MyStrongSecretPhrase2026!";
+var storedPublicKey = "..."; // from local
 
 var isValid = SmartPasswordGenerator.VerifySecret(secret, storedPublicKey);
 if (isValid)
@@ -176,32 +197,41 @@ manager.DeleteSmartPassword(publicKey);
 
 ### Strong Secret Examples
 ```
-✅ "MyCatHippo2026"          — mixed case + numbers
-✅ "P@ssw0rd!LongSecret"     — special chars + numbers + length
-✅ "КотБегемот2026НаДиете"   — Cyrillic + numbers
-✅ "GitHubPersonal2026!"     — description + extra chars (not description alone)
+✅ "MyStrongSecretPhrase2026!"   — mixed case + numbers + symbols
+✅ "P@ssw0rd!LongSecret"         — special chars + numbers + length
+✅ "КотБегемот2026НаДиете"       — Cyrillic + numbers
 ```
 
 ### Weak Secret Examples (avoid)
 ```
-❌ "GitHub Account"          — using description as secret (weak!)
-❌ "password"                — dictionary word, too short
-❌ "1234567890"              — only digits, too short
-❌ "qwerty123"               — keyboard pattern
-❌ Same as description       — never use the same value as password description
+❌ "GitHub Account"              — using description as secret (weak!)
+❌ "password"                    — dictionary word, too short
+❌ "1234567890"                  — only digits, too short
+❌ "qwerty123"                   — keyboard pattern
+❌ Same as description           — never use the same value as password description
 ```
 
-## Cross-Platform Compatibility
+### Decentralized Nature
 
+**There is no "forgot password" button.** This is by design:
+
+- No central server can reset your passwords
+- No support team can recover your access
+- Your secret phrase is the ONLY key
+
+**This is the price of true decentralization** — you are completely in control.
+
+## Cross-Platform Implementations
+
+The same deterministic algorithm is available in multiple languages.
 SmartPassLib C# produces **identical passwords** to:
 
-| Platform   | Repository                                                                   |
-|------------|------------------------------------------------------------------------------|
+| Language   | Repository                                                                   |
+|------------|:-----------------------------------------------------------------------------|
 | Python     | [smartpasslib](https://github.com/smartlegionlab/smartpasslib)               |
 | JavaScript | [smartpasslib-js](https://github.com/smartlegionlab/smartpasslib-js)         |
 | Kotlin     | [smartpasslib-kotlin](https://github.com/smartlegionlab/smartpasslib-kotlin) |
 | Go         | [smartpasslib-go](https://github.com/smartlegionlab/smartpasslib-go)         |
-| C#         | [smartpasslib-csharp](https://github.com/smartlegionlab/smartpasslib-csharp) |
 
 ## Ecosystem
 
@@ -242,6 +272,4 @@ Copyright (©) 2026, [Alexander Suvorov](https://github.com/smartlegionlab)
 
 - **Issues**: [GitHub Issues](https://github.com/smartlegionlab/smartpasslib-csharp/issues)
 - **Documentation**: This [README](README.md)
-
----
 
